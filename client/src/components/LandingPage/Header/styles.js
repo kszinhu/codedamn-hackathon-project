@@ -24,7 +24,16 @@ const HeaderBackground = styled.div`
   height: 55vh;
   overflow: clip;
 
-  background-color: #1a1a1aa8;
+  border-radius: 0% 0% 10% 10%;
+
+  /* background: #1a1a1aa8; */
+  background: radial-gradient(
+    circle,
+    rgba(0, 0, 0, 1) 0%,
+    rgba(0, 0, 10, 1) 100%
+  );
+
+  background-blend-mode: overlay;
 `;
 
 export { Header, HeaderBody, HeaderBackground };

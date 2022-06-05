@@ -65,18 +65,49 @@ const Animations = {
   },
 };
 
-const PlanetAnimationConfig = {
-  drag: true,
-  whileDrag: { scale: 1.2 },
-  dragConstraints: { top: 10, bottom: 200, left: 0, right: 600 },
-  transition: {
-    repeat: Infinity,
-    repeatType: "mirror",
-    duration: 60,
+const HeaderAnimationConfig = {
+  planet: {
+    drag: true,
+    whileDrag: { scale: 1.5 },
+    dragConstraints: { top: 10, bottom: 200, left: 0, right: 600 },
+    transition: {
+      repeat: Infinity,
+      repeatType: "mirror",
+      duration: 60,
+    },
+    animate: {
+      rotate: [0, 360],
+    },
   },
-  animate: {
-    rotate: [0, 360],
+  anotherPlanet: {
+    drag: true,
+    whileDrag: { scale: 1.5 },
+    dragConstraints: { top: 10, bottom: 200, left: 0, right: 600 },
+    transition: {
+      repeat: Infinity,
+      repeatType: "mirror",
+      duration: Math.random() * 60 + 20,
+    },
+    animate: {
+      x: [0, -360],
+      rotate: [0, 360],
+      y: [-360, 0],
+      scale: [1, 1.5],
+    },
+  },
+  asteroid: {
+    drag: true,
+    whileDrag: { scale: 1.5 },
+    transition: {
+      repeat: Infinity,
+      repeatType: "mirror",
+      duration: Math.random() * 60 + 20,
+    },
+    animate: {
+      x: [0, -360],
+      y: [-360, 0],
+    },
   },
 };
 
-export { Animations, PlanetAnimationConfig };
+export { Animations, HeaderAnimationConfig };
