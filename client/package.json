@@ -26,8 +26,8 @@
     "styled-components": "^5"
   },
   "scripts": {
-    "start": "vite",
-    "dev": "vite",
+    "start": "vite --host",
+    "dev": "vite --port $PUBLIC_PORT --host",
     "build": "vite build",
     "preview": "vite preview"
   },

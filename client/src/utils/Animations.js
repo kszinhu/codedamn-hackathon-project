@@ -1,4 +1,4 @@
-export const Animations = {
+const Animations = {
   fadeRightIn: {
     initial: {
       opacity: 0,
@@ -36,7 +36,7 @@ export const Animations = {
 
   scaleIn: {
     initial: {
-      scale: 0.9,
+      scale: 0.3,
       opacity: 0,
     },
 
@@ -64,3 +64,19 @@ export const Animations = {
     },
   },
 };
+
+const PlanetAnimationConfig = {
+  drag: true,
+  whileDrag: { scale: 1.2 },
+  dragConstraints: { top: 10, bottom: 200, left: 0, right: 600 },
+  transition: {
+    repeat: Infinity,
+    repeatType: "mirror",
+    duration: 60,
+  },
+  animate: {
+    rotate: [0, 360],
+  },
+};
+
+export { Animations, PlanetAnimationConfig };
