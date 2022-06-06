@@ -1,5 +1,5 @@
-import { forwardRef } from "react";
-import { MediaQuery } from "@mantine/core";
+import { useContext } from "react";
+import { MediaQuery, useMantineTheme } from "@mantine/core";
 
 import {
   BooleanValue,
@@ -15,25 +15,33 @@ import {
 import Asteroid from "../../assets/img/Asteroid.svg";
 
 import { SpaceIcons } from "../../config/assets";
-import Commify from "../../utils/Commify";
+import { Commify } from "../../utils/";
 
-const AsteroidCard = forwardRef(({ asteroid }, ref) => {
+import { AsteroidContext } from "../LandingPage";
+
+export default function AsteroidCard() {
+  const [selectedAsteroid, getRandomAsteroidFromAPI] =
+    useContext(AsteroidContext);
+  const theme = useMantineTheme();
+  
   const {
     id,
     name,
     is_potentially_hazardous_asteroid: isHazardous,
     close_approach_data: [
       {
-        orbiting_body,
-        close_approach_date_full: first_seen,
         relative_velocity: { kilometers_per_hour },
         miss_distance: { astronomical, kilometers, lunar },
       },
     ],
-  } = asteroid;
+    orbital_data: { first_observation_date: first_seen },
+  } = selectedAsteroid;
+
+  const orbiting_body =
+    selectedAsteroid.close_approach_data[0].orbiting_body ?? "No orbits";
 
   return (
-    <CardContainer ref={ref}>
+    <CardContainer>
       <CardGroup>
         <MediaQuery
           smallerThan={768}
@@ -134,11 +142,13 @@ const AsteroidCard = forwardRef(({ asteroid }, ref) => {
           </CardSection>
         </CardSection>
       </CardGroup>
-      <Button color='#661d78' py={15}>
+      <Button
+        color='#661d78'
+        py={15}
+        onClick={() => getRandomAsteroidFromAPI()}
+      >
         Check another asteroid
       </Button>
     </CardContainer>
   );
-});
-
-export default AsteroidCard;
+}

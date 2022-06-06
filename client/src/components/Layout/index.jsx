@@ -1,9 +1,9 @@
 import { AppLayout } from "./styles";
 import NavigationBar from "./NavigationBar";
 
-export default function Layout({ children, refs }) {
+export default function Layout({ children }) {
   return (
-    <AppLayout header={<NavigationBar refs={refs} />}>
+    <AppLayout header={<NavigationBar />}>
       {children}
     </AppLayout>
   );
